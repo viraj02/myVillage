@@ -5,12 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "",
-    authDomain: "myvillage-b17e4.firebaseapp.com",
-    databaseURL: "https://myvillage-b17e4.firebaseio.com",
-    projectId: "myvillage-b17e4",
-    storageBucket: "myvillage-b17e4.appspot.com",
-    messagingSenderId: "130123221699"
+   
   }
 };
 
