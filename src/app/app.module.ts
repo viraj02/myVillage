@@ -13,6 +13,7 @@ import { RegisterComponent } from './module/auth/register/register.component';
 import { HomeComponent } from './module/home/home.component';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PopModelComponent } from './module/pop-model/pop-model.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     LoginComponent,
     RegisterComponent,
     AuthpageComponent,
-    HomeComponent
+    HomeComponent,
+    PopModelComponent
   ],
   imports: [
     BrowserModule,

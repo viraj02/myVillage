@@ -47,23 +47,30 @@ export class RegisterComponent implements OnInit {
         if(this.confPassFlag == false) {
           localStorage.setItem('email',this.registerForm.value.email);
           localStorage.setItem('password',this.registerForm.value.password);
+          this.errorMessage = this.authService.error;
           // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
           this.tryRegister(this.registerForm.value);
         }
 
-       console.log(this.confPassFlag)
+       console.log(this.confPassFlag);
     }
 
     tryRegister(value){
-      this.authService.doRegister(value)
-      .then(res => {
-        console.log(res);
-        this.errorMessage = "";
-        this.successMessage = "Your account has been created";
-      }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
-        this.successMessage = "";
-      })
+      // this.authService.doRegister(value)
+      // .then(res => {
+      //   console.log(res);
+      //   this.errorMessage = "";
+      //   this.successMessage = "Your account has been created";
+      // }, err => {
+      //   console.log(err);
+      //   this.errorMessage = err.message;
+      //   this.successMessage = "";
+      // })
+      
+      this.authService.logIn(this.registerForm.value.email,this.registerForm.value.password);
+      
+
     }
 }
+
+
