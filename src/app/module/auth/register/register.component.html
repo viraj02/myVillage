@@ -1,4 +1,8 @@
-<!-- main app container -->
+
+<div class="container-fluid">
+    <app-header></app-header>
+</div>
+
 <div class="jumbotron">
   <div class="container">
       <div class="row">
@@ -44,11 +48,15 @@
                     </div>
                 </div>
                   <div class="form-group">
-                      <button class="btn btn-primary">Register</button>
+                    <table>
+                      <tr>
+                        <td><button class="btn btn-primary">Register</button></td>
+                        <td><button class="btn btn-warning" routerLink="/login">Login</button></td>
+                      </tr>
+                    </table>
                   </div>
               </form>
           </div>
       </div>
   </div>
 </div>
-

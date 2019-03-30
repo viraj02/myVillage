@@ -13,14 +13,18 @@ import { RegisterComponent } from './module/auth/register/register.component';
 import { HomeComponent } from './module/home/home.component';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PopupmodelComponent } from './module/popupmodel/popupmodel.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PopupmodelComponent,
     LoginComponent,
     RegisterComponent,
     AuthpageComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
