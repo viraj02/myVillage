@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+
+<div class="container-fluid">
+    <app-header (showfeedback)="userFeedback($event)" ></app-header>
+</div>
+
+<div class="container-fluid">
+  <span>Welcome we are in development...</span>
+
+</div>
+
+<div class="container-fluid">
+  <app-userscomments *ngIf="showFeedback" (closePop)="userFeedback($event)" ></app-userscomments>
+</div>

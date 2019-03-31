@@ -4,6 +4,9 @@ import {map} from "rxjs/operators";
 import { auth } from 'firebase';
 import {Router} from "@angular/router";
 import { BehaviorSubject } from 'rxjs';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+// import firebase from 'firebase/app'
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +87,8 @@ export class AuthService {
     })
     .catch((err)=>{
       console.log("An error ocurred");
-      this.error = err.message;
+      // this.error = err.message;
+      alert(err.message);
     })
   }
 
@@ -150,6 +154,10 @@ export class AuthService {
     catch(err) {
       this.subject.next("Please check Email ID");
     }
+  }
+
+  getCurrentUser()  {
+    console.log(firebase.auth().currentUser);
   }
 
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PopupmodelComponent } from './module/popupmodel/popupmodel.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { VideosComponent } from './module/videos/videos.component';
+import { UserscommentsComponent } from './module/userscomments/userscomments.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { HeaderComponent } from './shared/header/header.component';
     RegisterComponent,
     AuthpageComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    VideosComponent,
+    UserscommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { HeaderComponent } from './shared/header/header.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
