@@ -12,10 +12,10 @@ export class AppComponent {
 
   constructor(db: AngularFireDatabase) {
     // db.list('/test/')
-    db.list('test').valueChanges().subscribe(
-      e =>{ this.fireDatabase = e;
-         console.log(e) }
-    )
+    // db.list('test').valueChanges().subscribe(
+    //   e =>{ this.fireDatabase = e;
+    //      console.log(e) }
+    // )
   }
 
 }

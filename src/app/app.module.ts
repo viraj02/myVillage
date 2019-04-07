@@ -18,6 +18,7 @@ import { PopupmodelComponent } from './module/popupmodel/popupmodel.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { VideosComponent } from './module/videos/videos.component';
 import { UserscommentsComponent } from './module/userscomments/userscomments.component';
+import { MsgComponent } from './module/admin/msg/msg.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserscommentsComponent } from './module/userscomments/userscomments.com
     HomeComponent,
     HeaderComponent,
     VideosComponent,
-    UserscommentsComponent
+    UserscommentsComponent,
+    MsgComponent
   ],
   imports: [
     BrowserModule,

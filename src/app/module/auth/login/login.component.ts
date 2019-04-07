@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,19 @@ export class LoginComponent implements OnInit {
     restPassHidden: boolean = true;
     errorMessage: any = "";
 
-    constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+    adminMessage: any = {
+      header: "",
+      subject: ""
+    };
+    
+    constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, db: AngularFireDatabase) {
+      db.list('adminMsg').valueChanges().subscribe(
+        e =>{
+          this.adminMessage.header = e[0];
+          this.adminMessage.subject = e[1];
+        }
+      )
+     }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({

@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import { BehaviorSubject } from 'rxjs';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 // import firebase from 'firebase/app'
 
 @Injectable({
@@ -20,6 +21,11 @@ export class AuthService {
   error: string = "";
   emailSent = false;
 
+  adminUser = {
+    adminEmail: null,
+    adminPass: null
+  };
+
   //user instance
   user = this.afAuth.authState.pipe(
     map(authState =>{
@@ -31,7 +37,13 @@ export class AuthService {
     })
   );
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router,db: AngularFireDatabase) { 
+    db.list('admin').valueChanges().subscribe(
+      e =>{ this.adminUser.adminEmail = e[0];
+            this.adminUser.adminPass = e[1];
+      }
+    )
+  }
   
   //create the account
   logIn(email:string, password:string){
@@ -79,6 +91,13 @@ export class AuthService {
 
   //sign in with email and password
   signIn(email:string, password:string){
+
+      /**
+     * For Admin
+     */
+    if(email == this.adminUser.adminEmail && password == this.adminUser.adminPass) {
+      this.router.navigateByUrl("/adminMsg");
+    } else {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
       console.log(user.user.email);
@@ -90,6 +109,7 @@ export class AuthService {
       // this.error = err.message;
       alert(err.message);
     })
+  }
   }
 
   //google sign in

@@ -1,0 +1,49 @@
+
+<div class="container-fluid">
+  <h2>Welcome Admin!</h2>
+  <span>Last Login : </span><span>date-time</span>
+
+  <div>
+    <button class="btn btn-danger" (click)="logOut()" >LogOut</button>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-responsive table-borderless" >
+    <tr>
+      <th>Heading</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" name="" id="" class="form-control" [(ngModel)]="header" placeholder="Optional" >
+      </td>
+    </tr>
+    <tr>
+      <td>Type <span class="text-danger">*</span></td>
+    </tr>
+    <tr>
+      <td>
+        <select name="" id="" class="form-control" [(ngModel)]="selectedType" (change)="typeSelect(value)" >
+          <!-- <option selected disabled >**Select**</option> -->
+          <option value="Home">Home</option>
+          <option value="Videos">Videos</option>
+          <option value="Login">Login</option>
+          <option value="Register">Register</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Body <span class="text-danger">*</span></th>
+    </tr>
+    <tr>
+      <td>
+        <textarea name="" id="" cols="30" rows="10" class="form-control" [disabled]="selectedType == null" [(ngModel)]="message" placeholder="Message" (keyup)="btnCheck()"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td><button class="btn btn-primary" [disabled]="isBtnHidden" (click)="publishMsg()" >Publish</button></td>
+      <span>Atleast 10 words.</span><span *ngIf="isBtnHidden" class="text-info" >Need more {{ wordLength }} words </span>
+      <span *ngIf="!isBtnHidden" class="text-success" > Good to go! </span>
+    </tr>
+  </table>
+</div>
