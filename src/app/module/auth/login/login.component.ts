@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ApiglobalnameService } from 'src/app/services/apiglobalname.service';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,17 @@ export class LoginComponent implements OnInit {
     passText: any = "";
     restPassHidden: boolean = true;
     errorMessage: any = "";
+    email: any = "";
 
     adminMessage: any = {
       header: "",
       subject: ""
     };
+  conf: boolean = false;
     
-    constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, db: AngularFireDatabase) {
+    constructor(private formBuilder: FormBuilder, private router: Router, 
+      private authService: AuthService, 
+      db: AngularFireDatabase, private _httpName: ApiglobalnameService) {
       db.list('adminMsg').valueChanges().subscribe(
         e =>{
           this.adminMessage.header = e[0];
@@ -52,6 +57,12 @@ export class LoginComponent implements OnInit {
 
     }
 
+    /** Enter Value to Reset Email (Password) Textfield  */
+
+    setResetEmail() {
+      this.email = this.loginForm.value.email;
+    }
+
     /** Reset Password */
     resetPassword() {
       this.restPassHidden = !this.restPassHidden;
@@ -59,8 +70,11 @@ export class LoginComponent implements OnInit {
       // this.authService.sendPasswordResetEmail();
     }
 
-    sendResetEmail() {
-      this.authService.sendPasswordResetEmail('');
-    }
+    sendResetEmail() { 
 
+        this.conf = confirm(`Please verify Email ID ${this.loginForm.value.email} is correct!`);
+        if(this.conf) {
+          this.authService.sendPasswordResetEmail(this.loginForm.value.email);
+        }
+    }
 }

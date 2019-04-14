@@ -32,7 +32,7 @@ export class AuthService {
       if(!authState){
         return null;
       }else{
-        return authState.email
+        return authState.email;
       }
     })
   );
@@ -50,11 +50,15 @@ export class AuthService {
 
      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user)=>{
+
+        
+
         // email verification
         this.afAuth.user.subscribe( x => {
           if(x){
             x.sendEmailVerification()
             .then(()=>{
+              
               console.log("Email verification sent");
             })
             .catch(err => {
@@ -67,6 +71,7 @@ export class AuthService {
 
         console.log(user.user.email)
         this.error = "";
+        
         this.router.navigate(["/login"]);
       })
       .catch((err)=>{
@@ -91,24 +96,32 @@ export class AuthService {
 
   //sign in with email and password
   signIn(email:string, password:string){
-
       /**
      * For Admin
      */
     if(email == this.adminUser.adminEmail && password == this.adminUser.adminPass) {
       this.router.navigateByUrl("/adminMsg");
-    } else {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then((user)=>{
-      console.log(user.user.email);
-      this.error = "";
-      this.router.navigate(["/home"]);
-    })
-    .catch((err)=>{
-      console.log("An error ocurred");
-      // this.error = err.message;
-      alert(err.message);
-    })
+    } 
+    else {
+     
+      this.afAuth.user.subscribe( x => {
+        if(!x.emailVerified){
+          alert(`You are not verified user. Please check you mail ${email}`);
+          return;
+        } else {
+          this.afAuth.auth.signInWithEmailAndPassword(email, password)
+          .then((user)=>{
+            console.log(user.user.email);
+            this.error = "";
+            this.router.navigate(["/home"]);
+          })
+          .catch((err)=>{
+            console.log("An error ocurred");
+            // this.error = err.message;
+            alert(err.message);
+          })
+        }
+      });
   }
   }
 

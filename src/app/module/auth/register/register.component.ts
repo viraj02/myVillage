@@ -52,8 +52,6 @@ export class RegisterComponent implements OnInit {
           // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
           this.tryRegister(this.registerForm.value);
         }
-
-       console.log(this.confPassFlag);
     }
 
     tryRegister(value){
