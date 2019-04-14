@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   show: boolean = false;
 
   @Output() showfeedback = new EventEmitter();
+  navbarOpen: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -22,6 +23,10 @@ export class HeaderComponent implements OnInit {
   userComment() {
     this.showfeedback.emit(this.show);
     this.show = !this.show;
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 
 }
