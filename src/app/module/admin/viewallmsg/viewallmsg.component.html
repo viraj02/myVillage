@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h3>Admin Messages</h3>
+  <button (click)="deleteAfterExpDate()">Refresh</button>
+  <table class="table table-bordered table-dark text-center" >
+    <tr>
+      <th> Type </th>
+      <th> Subject </th> 
+      <th> Heading </th>
+      <th> Expiry Date </th>
+      <th> Delete Message </th>
+    </tr>
+    <tr *ngFor="let data of adminMsg">
+      <td> {{ data.type }} </td>
+      <td> {{ data.subject }} </td>
+      <td> {{ data.header }} </td>
+      <td> {{ data.expdate }} </td>
+      <td> <button class="btn btn-danger" (click)="deleteMsg(data)" >Delete</button> </td>
+    </tr>
+  </table>
+
+  <button routerLink="/adminMsg" class="btn btn-primary" >Admin Page</button>
+
+</div>

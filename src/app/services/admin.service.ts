@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase,private _http: HttpClient) { 
+
+  }
 
   randomNumberAuth()  {
     var counts = {};
@@ -21,12 +24,13 @@ export class AdminService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
  }
 
- createAdminMsg(type,header,subject){
+ createAdminMsg(type,header,subject,date){
 
   const adminData = this.db.list('adminMsg');
   adminData.set('type',type);
   adminData.set('header',header);
   adminData.set('subject',subject);
+  adminData.set('expdate',date);
   alert('Message Publish Successfully!!!');
 
   // return this.db.collection('users').add({
@@ -37,5 +41,10 @@ export class AdminService {
   //   avatar: avatar
   // });
 }
+
+deleteAdminMsg() {
+
+}
+
 
 }

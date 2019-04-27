@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-msg',
@@ -13,11 +15,17 @@ export class MsgComponent implements OnInit {
   isBtnHidden: boolean = true;
   wordLength: number = 10;
   selectedType: string;
+  today: Date;
+  minDate: any;
+  currentDate: any;
 
   constructor(private adminService: AdminService) {
    }
 
   ngOnInit() {
+    this.today = new Date();
+    this.minDate = formatDate(this.today,'yyyy-MM-dd','en-US', '+0530');
+    // this.currentDate = this.minDate;
   }
 
   logOut()  {
@@ -37,7 +45,11 @@ export class MsgComponent implements OnInit {
   }
 
   publishMsg() {
-    this.adminService.createAdminMsg(this.selectedType,this.header,this.message);
+    this.adminService.createAdminMsg(this.selectedType,this.header,this.message,this.currentDate);
+    this.selectedType = "";
+    this.header = "";
+    this.message = "";
+    this.currentDate = "";
   }
 
   typeSelect() {

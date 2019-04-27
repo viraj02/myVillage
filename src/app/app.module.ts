@@ -20,6 +20,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { VideosComponent } from './module/videos/videos.component';
 import { UserscommentsComponent } from './module/userscomments/userscomments.component';
 import { MsgComponent } from './module/admin/msg/msg.component';
+import { ViewallmsgComponent } from './module/admin/viewallmsg/viewallmsg.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MsgComponent } from './module/admin/msg/msg.component';
     HeaderComponent,
     VideosComponent,
     UserscommentsComponent,
-    MsgComponent
+    MsgComponent,
+    ViewallmsgComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,10 @@
 </div>
 
 <div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="container">
   <table class="table table-responsive table-borderless" >
     <tr>
       <th>Heading</th>
@@ -19,7 +23,7 @@
       </td>
     </tr>
     <tr>
-      <td>Type <span class="text-danger">*</span></td>
+      <th>Type <span class="text-danger">*</span></th>
     </tr>
     <tr>
       <td>
@@ -41,9 +45,21 @@
       </td>
     </tr>
     <tr>
+      <th>
+        Message Expiry Date 
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <input type="date" name="" id="" [min]="minDate" class="form-control" [(ngModel)]="currentDate" >
+      </th>
+    </tr>
+    <tr>
       <td><button class="btn btn-primary" [disabled]="isBtnHidden" (click)="publishMsg()" >Publish</button></td>
       <span>Atleast 10 words.</span><span *ngIf="isBtnHidden" class="text-info" >Need more {{ wordLength }} words </span>
       <span *ngIf="!isBtnHidden" class="text-success" > Good to go! </span>
+      <td><button routerLink="view-allMsg" class="btn btn-light" >All Admin Message</button></td>
     </tr>
   </table>
 </div>
+

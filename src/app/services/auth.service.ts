@@ -71,7 +71,6 @@ export class AuthService {
 
         console.log(user.user.email)
         this.error = "";
-        
         this.router.navigate(["/login"]);
       })
       .catch((err)=>{
