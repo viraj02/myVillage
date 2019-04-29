@@ -21,6 +21,8 @@ import { VideosComponent } from './module/videos/videos.component';
 import { UserscommentsComponent } from './module/userscomments/userscomments.component';
 import { MsgComponent } from './module/admin/msg/msg.component';
 import { ViewallmsgComponent } from './module/admin/viewallmsg/viewallmsg.component';
+import { UsefullinksComponent } from './module/usefullinks/usefullinks.component';
+import { HomepageComponent } from './module/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ViewallmsgComponent } from './module/admin/viewallmsg/viewallmsg.compon
     VideosComponent,
     UserscommentsComponent,
     MsgComponent,
-    ViewallmsgComponent
+    ViewallmsgComponent,
+    UsefullinksComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

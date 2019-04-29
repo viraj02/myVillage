@@ -8,6 +8,7 @@ import { VideosComponent } from './module/videos/videos.component';
 import { UserscommentsComponent } from './module/userscomments/userscomments.component';
 import { MsgComponent } from './module/admin/msg/msg.component';
 import { ViewallmsgComponent } from './module/admin/viewallmsg/viewallmsg.component';
+import { UsefullinksComponent } from './module/usefullinks/usefullinks.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'usercomments', component: UserscommentsComponent },
   { path: 'adminMsg', component: MsgComponent, children: [
     { path: 'view-allMsg', component: ViewallmsgComponent }
-  ]}
+  ]},
+  { path: 'usefullinks', component: UsefullinksComponent }
 ];
 
 @NgModule({
