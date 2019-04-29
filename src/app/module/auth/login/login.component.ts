@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           this.adminMessage.header = e[0];
           this.adminMessage.subject = e[1];
         }
-      )
+      );
      }
 
     ngOnInit() {
